@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" href="../../zacoonsGamesLogo.ico">
+        <link rel="stylesheet" href="../../zacoons.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+              $("#navBar").load("../../assets/navBar.html");
+            });
+        </script>
+    </head>
+
+    <style>
+        @font-face{
+            font-family: font;
+            src: url(../../font.ttf);
+        }
+
+        body{
+            background-image: url("background.png");
+            background-size: 25%;
+        }
+
+        div img{
+            margin: .5vw;
+        }
+
+        div p.text{
+            font-size: 3vw;
+            margin-bottom: .5vw;
+            margin-right: 5vw;
+            margin-left: 5vw;
+        }
+        div p.button{
+            font-size: 1vw;
+        }
+        div p.link{
+            font-size: 2vw;
+        }
+        div p.caption{
+            font-size: 2vw;
+            margin: 0px;
+            text-align: center;
+        }
+
+        div.left{
+            width: 35vw;
+            margin-left: 10vw;
+        }
+        div.right{
+            float: right;
+            width: 35vw;
+            margin-left: 100vw;
+            margin-right: 10vw;
+        }
+
+        div img.banner{
+            margin: 0px;
+            height: auto;
+            width: auto;
+            max-width: 100%;
+        }
+
+        p.link a.twitter{
+            padding-top: 2vw;
+            margin-bottom: -1.25vw;
+        }
+        p.link a.itchio{
+            padding: 2vw;
+            margin-bottom: -1vw;
+        }
+        a.itchio:link, a.itchio:visited{
+            background-image: url("../itchioLogo.png");
+        }
+
+        video{
+            height: auto;
+            width: auto;
+            max-width: 100%;
+        }
+    </style>
+
+    <body>
+        <div class="centered">
+            <img class="banner" width=1902 height=268 src="banner.png">
+
+            <div id="navBar"></div>
+            <br>
+            <br>
+
+            <p class="link">
+                <strong>Rise is currently in development, you can keep updated 
+                    on <a class="twitter" href="https://twitter.com/Zacoons"></a>.</strong>
+            </p>
+        </div>
+
+        <div class="left">
+            <video width="640" height="360" controls>
+                <source src="gameplayVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+            <p class="caption">FLUID PARKOUR!</p>
+        </div>
+        <div class="right">
+            <video width="640" height="360" controls>
+                <source src="gameplayVideo2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+            <p class="caption">FAST PACED COMBAT!</p>
+        </div>
+        <div class="left">
+            <p class="caption">COMING SOMETIME I THINK!</p>
+        </div>
+        
+        <div class="centered">
+            <br>
+            <p class="link">
+                You can find the rest of my games here: <a class="itchio" href="https://zacoons.itch.io/"></a>.
+            </p>
+        </div>
+
+        <footer>
+            <iframe src="../../assets/footer.html" width="150vw" height="50vw" style="border: none;"></iframe>
+        </footer>
+    </body>
+</html

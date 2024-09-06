@@ -1,0 +1,91 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: font;
+    transform-style: preserve-3d;
+    overflow-y: auto;
+}
+
+div.centered{
+    text-align: center;
+}
+
+div img.banner{
+    margin: 0px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+
+div img.banner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background: url(https://franknoirot.co/assets/img/furniture/5.jpg);
+    background-size: cover;
+    transform-origin: 50% 50% 0;
+    transform: translateZ(-1px)  scale(2);
+    z-index: -1;
+    min-height: 100vh;
+}
+
+p.link a:link, p.link a:visited{
+    display: inline-block;
+    margin: 1vw;
+    background-position: center;
+    background-size: contain;
+}
+a.twitter:link, a.twitter:visited{
+    padding: 1.5vw;
+    background-image: url("twitterLogo.png");
+}
+a.youtube:link, a.youtube:visited{
+    padding: 1.7vw;
+    background-image: url("youtubeLogo.png");
+}
+a.discord:link, a.discord:visited{
+    padding: 1.5vw;
+    background-image: url("discordLogo.png");
+}
+a.gmail:link, a.gmail:visited{
+    padding: 1.5vw;
+    background-image: url("gmailLogo.png");
+}
+a.discord:hover {
+    filter: opacity(.75);
+}
+a.twitter:hover {
+    filter: opacity(.75);
+}
+a.youtube:hover {
+    filter: opacity(.75);
+}
+
+footer{
+    position: static;
+    bottom: 0px;
+    padding-left: .5vw;
+    color: white;
+    margin: 0px;
+}
+
+iframe.video{
+    box-shadow: 0px 0px 25px .01px #000000;
+}
+video{
+    box-shadow: 0px 0px 25px .01px #000000;
+}
+
+@font-face{
+    font-family: font;
+    src: url(font.ttf);
+}

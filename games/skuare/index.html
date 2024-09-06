@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="../../zacoonsGamesLogo.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skuare</title>
+    <style>
+        tr {
+            height: 50px;
+        }
+        td {
+            width: 50px;
+            background-color: red;
+        }
+        .center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+        .hover {
+            background-color: rgb(192, 0, 0);
+        }
+        .hover.on {
+            background-color: rgb(0, 100, 0);
+        }
+        .on {
+            background-color: green;
+        }
+        .win {
+            background-color: rgb(206, 175, 0);
+        }
+        .hidden {
+            opacity: 0;
+        }
+        .hspace{
+            width:30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <label>Game Size 
+            <select id="sizeEntry" onchange="changeGameSize()">
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+        </label>
+        <div id="game"></div>
+        <div id="msg" class="hidden">You WIN!</div>
+        <button onclick="start()">Reset Game</button>
+    </div>
+</body>
+
+<script>
+    function start()
+    {
+        var game = document.getElementById('game');
+        game.innerHTML = "";
+
+        var tableElt = document.createElement('table');
+        game.appendChild(tableElt);
+
+        document.getElementById('msg').classList.add('hidden');
+
+        var sizeRaw = game.getAttribute('size');
+        if (sizeRaw === null)
+        {
+            sizeRaw = "3";
+        }
+
+        var size = parseInt(sizeRaw);
+        var rows = [];
+        for (var row = 0; row < size; row++)
+        {
+            var cells = [];
+            var rowElt = document.createElement('tr');
+            rowElt.id = 'row' + row;
+            tableElt.appendChild(rowElt);
+            rows.push(cells);
+            for (var col = 0; col < size; col++)
+            {
+                var cellElt = document.createElement('td');
+                cellElt.className = "cell";
+                cellElt.id = col;
+                cellElt.onmousedown = clickFactory(row, col);
+                cellElt.onmouseover = enterFactory(cellElt);
+                cellElt.onmouseleave = leaveFactory(cellElt);
+                cellElt.neighbours = [cellElt];
+                rowElt.appendChild(cellElt);
+                cells.push(cellElt);
+
+                Object.defineProperty(cellElt, 'isOn', {
+                    get()
+                    {
+                        return this.classList.contains('on');
+                    },
+                    set(value)
+                    {
+                        if (value)
+                        {
+                            this.classList.add('on');
+                        }
+                        else
+                        {
+                            this.classList.remove('on');
+                        }
+                    }
+                });
+            }
+        }
+        for (var row = 0; row < size; row++)
+        {
+            for (var col = 0; col < size; col++)
+            {
+                var cell = rows[row][col];
+                if (row - 1 >= 0)
+                    {
+                        cell.neighbours.push(rows[row - 1][col]);
+                    }
+                    if (row + 1 < size)
+                    {
+                        cell.neighbours.push(rows[row + 1][col]);
+                    }
+                    if (col - 1 >= 0)
+                    {
+                        cell.neighbours.push(rows[row][col - 1]);
+                    }
+                    if (col + 1 < size)
+                    {
+                        cell.neighbours.push(rows[row][col + 1]);
+                    }
+            }
+        }
+        function checkWin()
+        {
+            var onCount = 0;
+            for (var row = 0; row < size; row++)
+            {
+                for (var col = 0; col < size; col++)
+                {
+                    if (rows[row][col].isOn)
+                    {
+                        onCount++;
+                    }
+                }
+            }
+
+            if (onCount === size * size)
+            {
+                for (var row = 0; row < size; row++)
+                {
+                    for (var col = 0; col < size; col++)
+                    {
+                        var cell = rows[row][col];
+                        cell.onmousedown = null;
+                        cell.onmouseover = null;
+                        cell.onmouseleave = null;
+                        cell.className = "";
+                        cell.classList.add('win');
+                    }
+                }
+                document.getElementById('msg').className = "";
+            }
+        }
+        function clickFactory(_row, _col)
+        {
+            return function()
+            {
+                var cell = rows[_row][_col];
+                for (var n = 0; n < cell.neighbours.length; n++)
+                {
+                    cell.neighbours[n].isOn = !cell.neighbours[n].isOn;
+                }
+                checkWin();
+            };
+        }
+        function enterFactory(cellElt)
+        {
+            return function()
+            {
+                for(var n = 0; n < cellElt.neighbours.length; n++)
+                {
+                    cellElt.neighbours[n].classList.add("hover");
+                }
+            };
+        }
+        function leaveFactory(cellElt)
+        {
+            return function()
+            {
+                for(var n = 0; n < cellElt.neighbours.length; n++)
+                {
+                    cellElt.neighbours[n].classList.remove("hover");
+                }
+            };
+        }
+    }
+    function changeGameSize()
+    {
+        var game = document.getElementById('game');
+        var newSize = document.getElementById('sizeEntry');
+        game.setAttribute('size', newSize.value);
+        start();
+    }
+    start();
+</script>

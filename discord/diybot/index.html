@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" href="../../zacoonsGamesLogo.ico">
+        <link rel="stylesheet" href="../../zacoons.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+              $("#navBar").load("../../assets/navBar.html");
+            });
+        </script>
+    </head>
+
+    <style>
+        @font-face{
+            font-family: font;
+            src: url(../../font.ttf);
+        }
+        @font-face{
+            font-family: consolasFont;
+            src: url(../consolasFont.ttf);
+        }
+
+        body{
+            background-color: #222222;
+        }
+
+        div.centered{
+            font-size: 2vw;
+        }
+
+        p.caption{
+            margin: 0px;
+            margin-bottom: 1vw;
+        }
+
+        div.snippet{
+            font-family: consolasFont;
+            font-size: 1vw;
+            margin-left: 12.5vw;
+            margin-right: 12.5vw;
+            padding-left: .75vw;
+            padding-right: .75vw;
+            padding-top: .1vw;
+            padding-bottom: .1vw;
+            outline: black solid .1vw;
+            background-color: #191919;
+            text-align: left;
+            box-shadow: 0px 0px 25px .01px #000000 inset;
+        }
+
+        div.lowerSection{
+            padding-top: 5vw;
+            background-color: #222222;
+        }
+        
+        p.link a:link, p.link a:visited{
+            padding: 1vw;
+            text-decoration: none;
+            color: white;
+            font-size: 1.25vw;
+        }
+        a.button:link, a.button:visited{
+            background-color: cornflowerblue;
+            border-radius: .5vw;
+            box-shadow: 0px 0px 25px .1px #000000;
+        }
+
+        a.button:hover {
+            box-shadow: 0px 0px 0px 0px #000000;
+            background-color: rgb(128, 165, 233);
+        }
+
+        iframe.video{
+            /* width: 560px;
+            height: 315px; */
+            width: auto;
+            height: auto;
+            min-width: 31%;
+            min-height: 17vw;
+        }
+    </style>
+
+    <body>
+        <div class="centered">
+            <img class="banner" src="../codeBanner.png">
+            
+            <div id="navBar"></div>
+            <br>
+            <br>
+
+            <p class="link">
+                <a class="button" href="https://discord.com/oauth2/authorize?client_id=745412407211589684&permissions=8&scope=bot">Add ZBot To Your Server</a>
+            </p>
+
+            <div class="lowerSection">
+                <p class="caption">Or Watch The Tutorial To Make Your Own</p>
+                <iframe class='video'
+                    src="https://www.youtube.com/embed/fsulLWzAlNk"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <br>
+                <br>
+
+                <p class="caption">Extra Bonus Double Plus Code Snippets:</p>
+                <br>
+                
+                <p class="caption">Sends The Content Within A Pair Of Brackets (Useful For Input)</p>
+                <div class="snippet">
+                    <p>
+                        import discord<br>
+                        import re<br><br>
+                        @client.event<br>
+                        async def on_message(message):<br>
+                        &emsp; if message.content.startswith('command'):<br>
+                        &emsp; &emsp; bracketsContent = re.findall(r"\[([A-Za-z0-9_ ]+)\]", message.content)<br>
+                        &emsp; &emsp; await message.channel.send(bracketsContent)
+                    </p>
+                </div><br>
+                
+                <p class="caption">Adds A Role To A Member</p>
+                <div class="snippet">
+                    role = discord.utils.get(reaction.message.guild.roles, name="Role name")<br>
+                    await user.add_roles(role, reason=None, atomic=False)
+                </div><br>
+
+                <p class="caption">Embeds A Message</p>
+                <div class="snippet">
+                    embed = discord.Embed(title="Title", description="Descrip", color=0x07a0c3)<br>
+                    embedVar.add_field(name="Field 1", value="Content", inline=False)<br>
+                    await message.channel.send(embed=embedVar)
+                </div><br>
+                
+                <p class="caption">Checks For Swear Words</p>
+                <div class="snippet">
+                    swearWords = ['shipt', 'funck', 'dimck', 'chunt', 'binch'] #These are all the swear words I know<br><br>
+                    for swearWord in swearWords:<br>
+                    &emsp; if swearWord in message.content.lower():<br>
+                    &emsp; &emsp; await warn(message, message.author)
+                </div><br>
+            </div>
+        </div>
+
+        <footer>
+            <iframe src="../../assets/footer.html" width="150vw" height="50vw" style="border: none;"></iframe>
+        </footer>
+    </body>
+</html

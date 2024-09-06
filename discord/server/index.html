@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="../../zacoonsLogo.ico">
+    <link rel="stylesheet" href="../../zacoons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Server</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#navBar").load("../../assets/navBar.html");
+        });
+    </script>
+</head>
+
+<style>
+    @font-face{
+        font-family: font;
+        src: url(../../font.ttf);
+    }
+    body{
+        background-color: #5ec362;
+    }
+    img.banner{
+        max-width: 100%;
+        height: auto;
+    }
+    img.bg{
+        z-index: -1;
+        position: absolute;
+    }
+    img.castle{
+        z-index: 0;
+        position: absolute;
+    }
+    a.inviteButton:link, a.inviteButton:visited{
+        transition: .1s all ease;
+        display: block;
+        z-index: 2;
+        position: absolute;
+        top: 24.9vh;
+        left: 43.5vw;
+        background-color: rgb(148, 181, 241);
+        border: none;
+        border-radius: 5px;
+        font-family: font;
+        color: white;
+        font-size: 2vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        text-decoration: none;
+        box-shadow: 0vw 0vw 1vw rgb(56, 56, 56);
+    }
+    a.inviteButton:hover{
+        transition: .1s all ease;
+        top: 25vh;
+        left: 44vw;
+        padding-left: 4.5vw;
+        padding-right: 4.5vw;
+        padding-top: .9vh;
+        padding-bottom: .9vh;
+        box-shadow: 0vw 0vw 0vw rgb(56, 56, 56);
+    }
+    img.grassTop{
+        z-index: 1;
+        position: relative;
+    }
+    .left{
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        margin-left: 15vw;
+    }
+    .right{
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        margin-left: 55vw;
+    }
+    .textBox{
+        text-align: left;
+        font-size: 1.6vw;
+    }
+    p.textBoxText{
+        position: relative;
+        margin: 0;
+        margin-top: -20vw;
+        padding: 1vw;
+        max-width: 25vw;
+    }
+    #navBar:hover {
+        z-index: 10;
+    }
+</style>
+
+<body>
+    <div id="navBar" style="position: absolute;"></div>
+
+    <div class="bannerContainer" style="pointer-events: none;">
+        <img class="banner bg" src="bannerBG.png">
+        <img class="banner castle" src="castle.png">
+        <a href="https://discord.gg/4ksWGps" class="inviteButton">JOIN</a>
+        <img class="banner grassTop" src="grassTop.png">
+    </div>
+
+    <div class="left">
+        <div class="textBox">
+            <img src="textBox.png">
+            <p class="textBoxText">"This server is great, you'll really enjoy it" - Carl'sTheName
+            <br>
+            <br>
+            "Literally the best server lol" - Zacoons
+            <br>
+            <br>
+            "I <em></italic><strong>LOVE</strong></em> this server" - SKETCHING GIRAFFE</p>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="textBox">
+            <img src="textBox.png">
+            <p class="textBoxText">No topic, just hang out, make friends, and have fun!</p>
+        </div>
+    </div>
+
+    <footer>
+        <iframe src="../../assets/footer.html" width="150vw" height="50vw" style="border: none;"></iframe>
+    </footer>
+</body>
